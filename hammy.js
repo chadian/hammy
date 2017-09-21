@@ -8,8 +8,7 @@ const languageStrings = {
     translation: {
       QUOTES: quotes,
       SKILL_NAME: 'Hammy',
-      HELP_MESSAGE: 'You can say tell me a space fact, or, you can say exit... What can I help you with?',
-      HELP_REPROMPT: 'What can I help you with?',
+      HELP_MESSAGE: 'Go ahead, ask me for a random Hamilton quote.',
       STOP_MESSAGE: 'Goodbye!',
     },
   }
@@ -31,7 +30,6 @@ const handlers = {
   },
   'AMAZON.HelpIntent': function () {
     const speechOutput = this.t('HELP_MESSAGE');
-    const reprompt = this.t('HELP_MESSAGE');
     this.emit(':ask', speechOutput, reprompt);
   },
   'AMAZON.CancelIntent': function () {
