@@ -1,4 +1,6 @@
 {
+  "name": "hammy",
+  "main": "handler",
   "dependencies": {
     "alexa-sdk": "^1.0.14"
   }
