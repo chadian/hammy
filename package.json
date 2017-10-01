@@ -1,6 +1,9 @@
 {
   "name": "hammy",
   "main": "handler",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "alexa-sdk": "^1.0.14"
   },
