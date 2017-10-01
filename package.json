@@ -3,5 +3,9 @@
   "main": "handler",
   "dependencies": {
     "alexa-sdk": "^1.0.14"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "lambda-local": "^1.4.2"
   }
 }
