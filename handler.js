@@ -1,14 +1,11 @@
-'use strict';
-
 const Alexa = require('alexa-sdk');
-const quotes = require('./quotes');
+const { randomQuote } = require('./helpers');
 
 const languageStrings = {
   'en': {
     translation: {
-      QUOTES: quotes,
       SKILL_NAME: 'Hammy',
-      HELP_MESSAGE: 'Hello sir, ask me for a random quote from Hamilton.',
+      HELP_MESSAGE: 'Hello sir, ask me for quote from Hamilton.',
       STOP_MESSAGE: 'Goodbye!',
     },
   }
@@ -29,11 +26,7 @@ const handlers = {
     this.emit(':tell', this.t('STOP_MESSAGE'));
   },
   'RandomQuoteIntent': function () {
-    const quoteArr = this.t('QUOTES');
-    const quoteIndex = Math.floor(Math.random() * quoteArr.length);
-    const randomQuote = quoteArr[quoteIndex];
-
-    this.emit(':tell', randomQuote);
+    this.emit(':tell', randomQuote());
   }
 };
 
