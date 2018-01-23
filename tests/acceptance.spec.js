@@ -1,26 +1,20 @@
 const path = require('path');
 const lambdaLocal = require('lambda-local');
 
-const requestPayloadStub = require('./stubs/request');
-jest.mock('../quotes');
+const requestStub = require('./stubs/request');
 
 describe('hammy', () => {
-  test('it handles the happy path request', (done) => {
-    afterEach(() => {
-      jest.unmock('../quotes');
-    });
-
+  test('it handles the happy path request', () => {
     const request = lambdaLocal.execute({
-      event: requestPayloadStub,
+      event: requestStub,
       lambdaPath: path.resolve(__dirname, '../handler')
     })
 
     return request
       .then(result => {
-        expect(result.response.outputSpeech.ssml).toBe(
-          '<speak> If you stand for nothing Burr, what will you fall for? </speak>'
-        );
-      })
-      .then(done);
+        const outputSpeech = result.response.outputSpeech;
+        expect(outputSpeech.type).toBe('SSML');
+        expect(outputSpeech.ssml).toMatch(/^<speak>.*<\/speak>$/);
+      });
   });
 });
