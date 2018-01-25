@@ -1,7 +1,7 @@
 {
   "session": {
     "new": true,
-    "sessionId": "SessionId"
+    "sessionId": "SessionId",
     "application": {
       "applicationId": "amzn1.ask.skill.a8272edd-19a6-40b8-b233-3ca6e980b98d"
     },
@@ -18,7 +18,7 @@
       "slots": {
         "Speaker": {
           "name": "Speaker",
-          "value": "Hamilton"
+          "value": speaker
         }
       }
     },
