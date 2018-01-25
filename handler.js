@@ -27,6 +27,9 @@ const handlers = {
   },
   'RandomQuoteIntent': function () {
     this.emit(':tell', randomQuote());
+  },
+  'SpecificSpeakerQuoteIntent': function () {
+    this.emit(':tell', randomQuote());
   }
 };
 
