@@ -1,6 +1,6 @@
 module.exports = {
   "session": {
-    "new": false,
+    "new": true,
     "sessionId": "SessionId",
     "application": {
       "applicationId": "amzn1.ask.skill"

@@ -1,7 +1,7 @@
 const path = require('path');
 const lambdaLocal = require('lambda-local');
 
-const requestStub = require('./stubs/request');
+const requestStub = require('./stubs/random-request');
 
 describe('hammy', () => {
   test('it handles the happy path request', () => {
