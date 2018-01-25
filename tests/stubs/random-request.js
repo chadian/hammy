@@ -3,7 +3,7 @@ module.exports = {
     "new": true,
     "sessionId": "SessionId",
     "application": {
-      "applicationId": "amzn1.ask.skill"
+      "applicationId": "amzn1.ask.skill.randomrequesttestrun"
     },
     "attributes": {},
     "user": {
