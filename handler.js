@@ -1,35 +1,41 @@
 const Alexa = require('alexa-sdk');
-const { randomQuote } = require('./helpers');
+const { randomQuote, randomQuoteFromCharacter } = require("./helpers");
 
 const languageStrings = {
   'en': {
     translation: {
       SKILL_NAME: 'Hammy',
-      HELP_MESSAGE: 'Hello sir, ask me for quote from Hamilton.',
+      HELP_MESSAGE: 'Hello sir, ask me for a quote from Hamilton.',
       STOP_MESSAGE: 'Goodbye!',
     },
   }
 };
 
+const intent = {
+  RANDOM_QUOTE: "RandomQuoteIntent",
+  SPECIFIC_SPEAKER: "SpecificSpeakerQuoteIntent"
+};
+
 const handlers = {
-  'LaunchRequest': function () {
+  'LaunchRequest': function() {
     this.emit('GetQuote');
   },
-  'AMAZON.HelpIntent': function () {
+  'AMAZON.HelpIntent': function() {
     const speechOutput = this.t('HELP_MESSAGE');
     this.emit(':ask', speechOutput, reprompt);
   },
-  'AMAZON.CancelIntent': function () {
+  'AMAZON.CancelIntent': function() {
     this.emit(':tell', this.t('STOP_MESSAGE'));
   },
-  'AMAZON.StopIntent': function () {
+  'AMAZON.StopIntent': function() {
     this.emit(':tell', this.t('STOP_MESSAGE'));
   },
-  'RandomQuoteIntent': function () {
+  [intent.RANDOM_QUOTE]: function() {
     this.emit(':tell', randomQuote());
   },
-  'SpecificSpeakerQuoteIntent': function () {
-    this.emit(':tell', randomQuote());
+  [intent.SPECIFIC_SPEAKER]: function() {
+    const character = this.event.request.intent.slots.Speaker.value;
+    this.emit(":tell", randomQuoteFromCharacter(character));
   }
 };
 
