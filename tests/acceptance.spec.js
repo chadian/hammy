@@ -2,7 +2,7 @@ import path from 'path';
 import lambdaLocal from 'lambda-local';
 import randomRequestStub from './stubs/random-request';
 import specificSpeakerRequest from './stubs/specific-speaker-request';
-import quoteData, { HAMILTON_QUOTES } from '../src/quoteData';
+import quoteData, { HAMILTON_QUOTES } from '../src/quote-data';
 
 const lambdaPath = path.resolve(__dirname, '../dist/handler');
 const ssmlify = quote => `<speak> ${quote} </speak>`;
