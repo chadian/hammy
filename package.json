@@ -1,5 +1,10 @@
 {
   "name": "hammy",
+  "version": "1.0.0",
+  "description": "An Alexa skill for quotes from the hit musical Hamilton ",
+  "repository": "git@github.com:chadian/hammy.git",
+  "author": "Chad Carbert <chadcarbert@me.com>",
+  "license": "MIT",
   "main": "handler",
   "scripts": {
     "test": "jest"
