@@ -1,40 +1,40 @@
-module.exports = {
-  "session": {
-    "new": true,
-    "sessionId": "SessionId",
-    "application": {
-      "applicationId": "amzn1.ask.skill.randomrequesttestrun"
+export default {
+  session: {
+    new: false,
+    sessionId: 'SessionId',
+    application: {
+      applicationId: 'amzn1.ask.skill',
     },
-    "attributes": {},
-    "user": {
-      "userId": "amzn1.ask.account"
-    }
+    attributes: {},
+    user: {
+      userId: 'amzn1.ask.account',
+    },
   },
-  "request": {
-    "type": "IntentRequest",
-    "requestId": "EdwRequestId",
-    "intent": {
-      "name": "RandomQuoteIntent",
-      "slots": {}
+  request: {
+    type: 'IntentRequest',
+    requestId: 'EdwRequestId',
+    intent: {
+      name: 'RandomQuoteIntent',
+      slots: {},
     },
-    "locale": "en-US",
-    "timestamp": "2017-09-30T22:07:47Z"
+    locale: 'en-US',
+    timestamp: '2017-09-30T22:07:47Z',
   },
-  "context": {
-    "AudioPlayer": {
-      "playerActivity": "IDLE"
+  context: {
+    AudioPlayer: {
+      playerActivity: 'IDLE',
     },
-    "System": {
-      "application": {
-        "applicationId": "amzn1.ask.skill"
+    System: {
+      application: {
+        applicationId: 'amzn1.ask.skill',
       },
-      "user": {
-        "userId": "amzn1.ask.account"
+      user: {
+        userId: 'amzn1.ask.account',
       },
-      "device": {
-        "supportedInterfaces": {}
-      }
-    }
+      device: {
+        supportedInterfaces: {},
+      },
+    },
   },
-  "version": "1.0"
+  version: '1.0',
 };

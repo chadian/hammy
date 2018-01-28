@@ -1,36 +1,31 @@
-const path = require('path');
-const lambdaLocal = require('lambda-local');
+import path from 'path';
+import lambdaLocal from 'lambda-local';
+import randomRequestStub from './stubs/random-request';
+import specificSpeakerRequest from './stubs/specific-speaker-request';
+import quoteData, { HAMILTON_QUOTES } from '../src/quoteData';
 
-const randomRequestStub = require('./stubs/random-request');
-const specificSpeakerRequest = require("./stubs/specific-speaker-request");
-const lambdaPath = path.resolve(__dirname, "../handler");
-const quoteData = require("../quoteData");
-
+const lambdaPath = path.resolve(__dirname, '../dist/handler');
 const ssmlify = quote => `<speak> ${quote} </speak>`;
-
-const requestWith = event => lambdaLocal.execute({ event , lambdaPath });
+const requestWith = event => lambdaLocal.execute({ event, lambdaPath });
 
 describe('hammy', async () => {
   test('it handles the random quote intent', async () => {
-    const result = await requestWith(randomRequestStub)
+    const result = await requestWith(randomRequestStub);
 
-    const outputSpeech = result.response.outputSpeech;
-    expect(outputSpeech.type).toBe("SSML");
+    const { outputSpeech } = result.response;
+    expect(outputSpeech.type).toBe('SSML');
 
     const ssmlQuotes = quoteData.map(quote => ssmlify(quote.value));
     expect(ssmlQuotes).toContain(outputSpeech.ssml);
   });
 
-  test("it handles the specific character quote intent", async () => {
+  test('it handles the specific character quote intent', async () => {
     const result = await requestWith(specificSpeakerRequest('ALEXANDER_HAMILTON'));
 
-    const outputSpeech = result.response.outputSpeech;
+    const { outputSpeech } = result.response;
     expect(outputSpeech.type).toBe('SSML');
 
-    const hamiltonSsmlQuotes = quoteData
-      .filter(quote => quote.speaker === "ALEXANDER_HAMILTON")
-      .map(quote => ssmlify(quote.value));
-
+    const hamiltonSsmlQuotes = HAMILTON_QUOTES.map(quote => ssmlify(quote.value));
     expect(hamiltonSsmlQuotes).toContain(outputSpeech.ssml);
   });
 });

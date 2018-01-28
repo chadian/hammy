@@ -1,47 +1,45 @@
-module.exports = (speaker) => {
-  return {
-    "session": {
-      "new": true,
-      "sessionId": "SessionId",
-      "application": {
-        "applicationId": "amzn1.ask.specificrequesttestrun"
-      },
-      "attributes": {},
-      "user": {
-        "userId": "amzn1.ask.account"
-      }
+export default speaker => ({
+  session: {
+    new: true,
+    sessionId: 'SessionId',
+    application: {
+      applicationId: 'amzn1.ask.specificrequesttestrun',
     },
-    "request": {
-      "type": "IntentRequest",
-      "requestId": "EdwRequestId",
-      "intent": {
-        "name": "SpecificSpeakerQuoteIntent",
-        "slots": {
-          "Speaker": {
-            "name": "Speaker",
-            "value": speaker
-          }
-        }
-      },
-      "locale": "en-US",
-      "timestamp": "2018-01-25T07:19:40Z"
+    attributes: {},
+    user: {
+      userId: 'amzn1.ask.account',
     },
-    "context": {
-      "AudioPlayer": {
-        "playerActivity": "IDLE"
-      },
-      "System": {
-        "application": {
-          "applicationId": "amzn1.ask.skill"
+  },
+  request: {
+    type: 'IntentRequest',
+    requestId: 'EdwRequestId',
+    intent: {
+      name: 'SpecificSpeakerQuoteIntent',
+      slots: {
+        Speaker: {
+          name: 'Speaker',
+          value: speaker,
         },
-        "user": {
-          "userId": "amzn1.ask.account"
-        },
-        "device": {
-          "supportedInterfaces": {}
-        }
-      }
+      },
     },
-    "version": "1.0"
-  }
-};
+    locale: 'en-US',
+    timestamp: '2018-01-25T07:19:40Z',
+  },
+  context: {
+    AudioPlayer: {
+      playerActivity: 'IDLE',
+    },
+    System: {
+      application: {
+        applicationId: 'amzn1.ask.skill',
+      },
+      user: {
+        userId: 'amzn1.ask.account',
+      },
+      device: {
+        supportedInterfaces: {},
+      },
+    },
+  },
+  version: '1.0',
+});
