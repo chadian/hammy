@@ -14,9 +14,11 @@
     "alexa-sdk": "^1.0.14"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.7.0",
     "jest": "^21.2.1",
     "lambda-local": "^1.4.2"
   }
