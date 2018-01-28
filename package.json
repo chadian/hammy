@@ -1,13 +1,26 @@
 {
   "name": "hammy",
+  "version": "1.0.0",
+  "description": "An Alexa skill for quotes from the hit musical Hamilton ",
+  "repository": "git@github.com:chadian/hammy.git",
+  "author": "Chad Carbert <chadcarbert@me.com>",
+  "license": "MIT",
   "main": "handler",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "yarn eslint \"**/*.js\"",
+    "build": "babel src -d dist"
   },
   "dependencies": {
     "alexa-sdk": "^1.0.14"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.7.0",
     "jest": "^21.2.1",
     "lambda-local": "^1.4.2"
   }

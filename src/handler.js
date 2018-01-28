@@ -1,39 +1,40 @@
-const Alexa = require('alexa-sdk');
-const { randomQuote } = require('./helpers');
+import Alexa from 'alexa-sdk';
+import { randomQuote } from './helpers';
 
 const languageStrings = {
-  'en': {
+  en: {
     translation: {
       SKILL_NAME: 'Hammy',
       HELP_MESSAGE: 'Hello sir, ask me for quote from Hamilton.',
       STOP_MESSAGE: 'Goodbye!',
     },
-  }
+  },
 };
 
 const handlers = {
-  'LaunchRequest': function () {
+  LaunchRequest() {
     this.emit('GetQuote');
   },
-  'AMAZON.HelpIntent': function () {
+  'AMAZON.HelpIntent': function HelpIntent() {
     const speechOutput = this.t('HELP_MESSAGE');
-    this.emit(':ask', speechOutput, reprompt);
+    this.emit(':ask', speechOutput);
   },
-  'AMAZON.CancelIntent': function () {
+  'AMAZON.CancelIntent': function CancelIntent() {
     this.emit(':tell', this.t('STOP_MESSAGE'));
   },
-  'AMAZON.StopIntent': function () {
+  'AMAZON.StopIntent': function StopIntent() {
     this.emit(':tell', this.t('STOP_MESSAGE'));
   },
-  'RandomQuoteIntent': function () {
+  RandomQuoteIntent() {
     this.emit(':tell', randomQuote());
-  }
+  },
 };
 
-exports.handler = function (event, context) {
+// eslint-disable-next-line import/prefer-default-export
+export function handler(event, context) {
   const alexa = Alexa.handler(event, context);
   // To enable string internationalization (i18n) features, set a resources object.
   alexa.resources = languageStrings;
   alexa.registerHandlers(handlers);
   alexa.execute();
-};
+}
