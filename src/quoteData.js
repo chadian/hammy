@@ -40,4 +40,4 @@ const allQuotes = [].concat(
   KING_GEORGE_QUOTES,
 );
 
-module.exports = allQuotes;
+export default allQuotes;

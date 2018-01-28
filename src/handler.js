@@ -1,5 +1,5 @@
-const Alexa = require('alexa-sdk');
-const { randomQuote } = require('./helpers');
+import Alexa from 'alexa-sdk';
+import { randomQuote } from './helpers';
 
 const languageStrings = {
   en: {
@@ -30,10 +30,11 @@ const handlers = {
   },
 };
 
-exports.handler = function handler(event, context) {
+// eslint-disable-next-line import/prefer-default-export
+export function handler(event, context) {
   const alexa = Alexa.handler(event, context);
   // To enable string internationalization (i18n) features, set a resources object.
   alexa.resources = languageStrings;
   alexa.registerHandlers(handlers);
   alexa.execute();
-};
+}
