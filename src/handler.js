@@ -1,4 +1,5 @@
 import Alexa from 'alexa-sdk';
+import data from './quote-data';
 import { randomQuote, randomQuoteFromCharacter } from './helpers';
 
 const languageStrings = {
@@ -31,11 +32,11 @@ const handlers = {
     this.emit(':tell', this.t('STOP_MESSAGE'));
   },
   [intent.RANDOM_QUOTE]() {
-    this.emit(':tell', randomQuote());
+    this.emit(':tell', randomQuote(data)());
   },
   [intent.SPECIFIC_SPEAKER]() {
     const character = this.event.request.intent.slots.Speaker.value;
-    this.emit(':tell', randomQuoteFromCharacter(character));
+    this.emit(':tell', randomQuoteFromCharacter(data)(character));
   },
 };
 
