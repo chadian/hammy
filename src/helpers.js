@@ -13,5 +13,5 @@ function randomQuote() {
 
 module.exports = {
   randomQuote,
-  randomQuoteFromCharacter
-}
+  randomQuoteFromCharacter,
+};
