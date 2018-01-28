@@ -7,7 +7,7 @@ describe('hammy', () => {
   test('it handles the happy path request', () => {
     const request = lambdaLocal.execute({
       event: requestStub,
-      lambdaPath: path.resolve(__dirname, '../handler'),
+      lambdaPath: path.resolve(__dirname, '../dist/handler'),
     });
 
     return request
