@@ -2,7 +2,7 @@ import path from 'path';
 import lambdaLocal from 'lambda-local';
 import randomRequestStub from './stubs/random-request';
 import specificSpeakerRequest from './stubs/specific-speaker-request';
-import quoteData, { HAMILTON_QUOTES } from '../src/quote-data';
+import quoteData, { WASHINGTON_QUOTES } from '../src/quote-data';
 
 const lambdaPath = path.resolve(__dirname, '../dist/handler');
 const ssmlify = quote => `<speak> ${quote} </speak>`;
@@ -20,12 +20,13 @@ describe('hammy', async () => {
   });
 
   test('it handles the specific character quote intent', async () => {
-    const result = await requestWith(specificSpeakerRequest('ALEXANDER_HAMILTON'));
+    const result = await requestWith(specificSpeakerRequest('GEORGE_WASHINGTON'));
 
     const { outputSpeech } = result.response;
     expect(outputSpeech.type).toBe('SSML');
 
-    const hamiltonSsmlQuotes = HAMILTON_QUOTES.map(quote => ssmlify(quote.value));
+    const hamiltonSsmlQuotes = WASHINGTON_QUOTES.map(quote => ssmlify(quote.value));
+
     expect(hamiltonSsmlQuotes).toContain(outputSpeech.ssml);
   });
 });

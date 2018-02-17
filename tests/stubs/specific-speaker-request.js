@@ -1,4 +1,4 @@
-export default speaker => ({
+export default speakerId => ({
   session: {
     new: true,
     sessionId: 'SessionId',
@@ -15,10 +15,31 @@ export default speaker => ({
     requestId: 'EdwRequestId',
     intent: {
       name: 'SpecificSpeakerQuoteIntent',
+      confirmationStatus: 'NONE',
       slots: {
         Speaker: {
           name: 'Speaker',
-          value: speaker,
+          value: 'the Washington',
+          resolutions: {
+            resolutionsPerAuthority: [
+              {
+                authority:
+                    'amzn1.er-authority.echo-sdk.amzn1.ask.skill.a8272edd-19a6-40b8-b233-3ca6e980b98d.Speaker',
+                status: {
+                  code: 'ER_SUCCESS_MATCH',
+                },
+                values: [
+                  {
+                    value: {
+                      name: speakerId,
+                      id: speakerId,
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+          confirmationStatus: 'NONE',
         },
       },
     },
