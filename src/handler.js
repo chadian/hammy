@@ -14,8 +14,9 @@ const languageStrings = {
 };
 
 const intent = {
-  RANDOM_QUOTE: 'RandomQuoteIntent',
-  SPECIFIC_SPEAKER: 'SpecificSpeakerQuoteIntent',
+  RANDOM_QUOTE: "RandomQuoteIntent",
+  SPECIFIC_SPEAKER: "SpecificSpeakerQuoteIntent",
+  INES: "InesFavoriteIntent"
 };
 
 const handlers = {
@@ -35,12 +36,15 @@ const handlers = {
   [intent.RANDOM_QUOTE]() {
     this.emit(':tell', randomQuote(data)());
   },
+  [intent.INES]() {
+    this.emit(":tell", "Hmm, I really don't know. She'll have to let me know.");
+  },
   [intent.SPECIFIC_SPEAKER]() {
     const speakerSlot = _get(this.event, 'request.intent.slots.Speaker');
     const resolution = _get(speakerSlot, 'resolutions.resolutionsPerAuthority[0]');
     const characterId = _get(resolution, 'values[0].value.id');
     this.emit(':tell', randomQuoteFromCharacter(data)(characterId));
-  },
+  }
 };
 
 // eslint-disable-next-line import/prefer-default-export
