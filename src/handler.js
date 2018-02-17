@@ -1,4 +1,5 @@
 import Alexa from 'alexa-sdk';
+import _get from 'lodash/get';
 import data from './quote-data';
 import { randomQuote, randomQuoteFromCharacter } from './helpers';
 
@@ -35,8 +36,10 @@ const handlers = {
     this.emit(':tell', randomQuote(data)());
   },
   [intent.SPECIFIC_SPEAKER]() {
-    const character = this.event.request.intent.slots.Speaker.value;
-    this.emit(':tell', randomQuoteFromCharacter(data)(character));
+    const speakerSlot = _get(this.event, 'request.intent.slots.Speaker');
+    const resolution = _get(speakerSlot, 'resolutions.resolutionsPerAuthority[0]');
+    const characterId = _get(resolution, 'values[0].value.id');
+    this.emit(':tell', randomQuoteFromCharacter(data)(characterId));
   },
 };
 
