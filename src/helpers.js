@@ -1,12 +1,8 @@
-import data from './quoteData';
-
 const rand = arr => arr[Math.floor(Math.random() * arr.length)];
 
-export function randomQuoteFromCharacter(character) {
+export const randomQuoteFromCharacter = data => (character) => {
   const characterQuotes = data.filter(({ speaker }) => speaker === character);
-  return rand(characterQuotes).quote;
-}
+  return rand(characterQuotes).value;
+};
 
-export function randomQuote() {
-  return rand(data).quote;
-}
+export const randomQuote = data => () => rand(data).value;

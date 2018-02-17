@@ -8,8 +8,12 @@ provider:
   stage: production
   region: us-east-1
 
+package:
+  exclude:
+    - src/**
+
 functions:
   hammy:
-    handler: handler.handler
+    handler: dist/handler.handler
     events:
       - alexaSkill

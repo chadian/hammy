@@ -1,19 +1,32 @@
 import path from 'path';
 import lambdaLocal from 'lambda-local';
-import requestStub from './stubs/request';
+import randomRequestStub from './stubs/random-request';
+import specificSpeakerRequest from './stubs/specific-speaker-request';
+import quoteData, { WASHINGTON_QUOTES } from '../src/quote-data';
 
-describe('hammy', () => {
-  test('it handles the happy path request', () => {
-    const request = lambdaLocal.execute({
-      event: requestStub,
-      lambdaPath: path.resolve(__dirname, '../dist/handler'),
-    });
+const lambdaPath = path.resolve(__dirname, '../dist/handler');
+const ssmlify = quote => `<speak> ${quote} </speak>`;
+const requestWith = event => lambdaLocal.execute({ event, lambdaPath });
 
-    return request
-      .then((result) => {
-        const { outputSpeech } = result.response;
-        expect(outputSpeech.type).toBe('SSML');
-        expect(outputSpeech.ssml).toMatch(/^<speak>.*<\/speak>$/);
-      });
+describe('hammy', async () => {
+  test('it handles the random quote intent', async () => {
+    const result = await requestWith(randomRequestStub);
+
+    const { outputSpeech } = result.response;
+    expect(outputSpeech.type).toBe('SSML');
+
+    const ssmlQuotes = quoteData.map(quote => ssmlify(quote.value));
+    expect(ssmlQuotes).toContain(outputSpeech.ssml);
+  });
+
+  test('it handles the specific character quote intent', async () => {
+    const result = await requestWith(specificSpeakerRequest('GEORGE_WASHINGTON'));
+
+    const { outputSpeech } = result.response;
+    expect(outputSpeech.type).toBe('SSML');
+
+    const hamiltonSsmlQuotes = WASHINGTON_QUOTES.map(quote => ssmlify(quote.value));
+
+    expect(hamiltonSsmlQuotes).toContain(outputSpeech.ssml);
   });
 });

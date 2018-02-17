@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   session: {
     new: false,
     sessionId: 'SessionId',

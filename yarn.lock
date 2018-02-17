@@ -63,9 +63,9 @@ ajv@^5.2.3, ajv@^5.3.0:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
 
-alexa-sdk@^1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/alexa-sdk/-/alexa-sdk-1.0.14.tgz#46f225ce5f0e9315ca53623dc5fb4058e2e7fb14"
+alexa-sdk@^1.0.25:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/alexa-sdk/-/alexa-sdk-1.0.25.tgz#bac389792aaba20bb7bd799eaf049ebff5bd8273"
   dependencies:
     aws-sdk "^2.4.7"
     i18next "^3.4.1"
@@ -2434,6 +2434,10 @@ lodash.cond@^4.3.0:
 lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+lodash@^4.17.5:
+  version "4.17.5"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 longest@^1.0.1:
   version "1.0.1"
